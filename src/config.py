@@ -1,11 +1,25 @@
+import os
+
+
 class BaseConfig:
     TESTING = False
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = "my_precious"
+
 
 class DevelopmentConfig(BaseConfig):
-    pass
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
-class TestConfig(BaseConfig):
+
+class TestingConfig(BaseConfig):
     TESTING = True
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_TEST_URL")
+
 
 class ProductionConfig(BaseConfig):
-    pass
+    url = os.environ.get("DATABASE_URL")
+
+    if url is not None and url.startswith("postgres://"):
+        url = url.replace("postgres://", "postgresql://", 1)
+
+    SQLALCHEMY_DATABASE_URI = url
