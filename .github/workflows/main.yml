@@ -60,4 +60,4 @@ jobs:
     steps:
       - name: Run Tests
         run: |
-          pytest "myuser/src/tests" -p no:warnings
+          ls
