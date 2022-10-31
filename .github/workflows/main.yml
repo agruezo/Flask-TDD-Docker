@@ -38,6 +38,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+    needs: build
     container:
       image: agruezo/flasktdd:latest
     services:
@@ -59,7 +60,6 @@ jobs:
     steps:
       - name: Run Tests
         run: |
-          flake8 /__w/Flask-TDD-Docker/Flask-TDD-Docker/flask-tdd-docker/src
-          black /__w/Flask-TDD-Docker/Flask-TDD-Docker/flask-tdd-docker/src --check
-          isort /__w/Flask-TDD-Docker/Flask-TDD-Docker/flask-tdd-docker/src --check-only
-
+          flake8 src
+          black src --check
+          isort src --check-only
