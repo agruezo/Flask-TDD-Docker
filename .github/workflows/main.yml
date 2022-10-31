@@ -60,5 +60,5 @@ jobs:
 
       - name: Run Tests
         run: |
-          cd ../..
+          cd .
           ls -a
