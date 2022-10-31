@@ -25,13 +25,14 @@ jobs:
         context: .
         file: ./Dockerfile.prod
         load: true
+        tags: flasktdd:latest
 
     - name: Test
       run: |
-        pytest "src/tests" -p no:warnings
-        flake8 src
-        black src --check
-        isort src --check-only
+        docker exec flasktdd:latest pytest "src/tests" -p no:warnings
+        docker exec flasktdd:latest flake8 src
+        docker exec flasktdd:latest black src --check
+        docker exec flasktdd:latest isort src --check-only
 
   # test:
   #   runs-on: ubuntu-latest
