@@ -61,4 +61,4 @@ jobs:
       - name: Run Tests
         uses: addnab/docker-run-action@v3
           run: |
-            -v $(pwd)/.:/workdir -w /workdir flasktdd flake8 src
+            docker compose exec api python -m pytest "src/tests" -p no:warnings
