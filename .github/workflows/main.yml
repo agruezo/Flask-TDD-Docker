@@ -39,7 +39,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container:
-      image: docker://agruezo/flasktdd:latest
+      image: agruezo/flasktdd:latest
     services:
       postgres:
         image: postgres:latest
@@ -58,15 +58,9 @@ jobs:
 
     steps:
 
-      - name: Checkout
-        uses: actions/checkout@v2
-      
-      
-
-
       - name: Run Tests
         run: |
-          pytest "src/tests" -p no:warnings
+          pytest "/src/tests" -p no:warnings
           flake8 src
           black src --check
           isort src --check-only
