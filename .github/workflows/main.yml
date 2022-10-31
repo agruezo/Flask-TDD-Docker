@@ -60,7 +60,7 @@ jobs:
 
       - name: Run Tests
         run: |
-          pytest "./usr/src/app/tests" -p no:warnings
+          pytest "." -p no:warnings
           flake8 src
           black src --check
           isort src --check-only
