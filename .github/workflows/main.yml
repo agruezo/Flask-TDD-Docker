@@ -57,12 +57,15 @@ jobs:
           --health-retries 5
 
     steps:
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3.5.1
-        with:
-          node-version: 16
+      - name: Reclaim cache directory
+        run: chown -R 1001:1001 /github/home/.cache && echo "pwn dat cache"
+      # - name: Setup Node.js environment
+      #   uses: actions/setup-node@v3.5.1
+      #   with:
+      #     node-version: 16
       - name: Checkout
         uses: actions/checkout@v3
+      
       
 
 
