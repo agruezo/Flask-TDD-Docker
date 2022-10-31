@@ -27,11 +27,16 @@ jobs:
         load: true
         tags: flasktdd:latest
 
-    - name: Test
-      run: |
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: agruezo/flask-tdd-docker
+
+    steps:
+
+    - run: |
         pytest "src/tests" -p no:warnings
-      using: 'docker'
-      image: 'Dockerfile.prod'
+
 
 
   # test:
