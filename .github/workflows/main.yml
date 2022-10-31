@@ -28,11 +28,10 @@ jobs:
         tags: flasktdd:latest
 
     - name: Test
-      runs:
-        using: 'docker'
-        image: 'Dockerfile.prod'
       run: |
         pytest "src/tests" -p no:warnings
+      using: 'docker'
+      image: 'Dockerfile.prod'
 
 
   # test:
