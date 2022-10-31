@@ -58,5 +58,5 @@ jobs:
     steps:
       - name: Run Tests
         run: |
-          docker compose exec api python -m pytest "src/tests" -p no:warnings --cov="src"
+          pytest "flasktdd/src/tests" -p no:warnings
 
