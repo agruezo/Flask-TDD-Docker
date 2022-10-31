@@ -2,7 +2,8 @@ name: CI/CD
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - 'main'
 
   workflow_dispatch:
 
@@ -16,50 +17,20 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_HUB_USERNAME}}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-    - name: Build
+    - name: Build and push Docker images
       uses: docker/build-push-action@v3.2.0
       with:
         context: .
         file: ./Dockerfile.prod
-        load: true
-        tags: flasktdd:latest
+        builder: ${{ steps.buildx.outputs.name }}
+        push: true
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flasktdd:latest
+        cache-from: type=registry, ref=${{ secrets.DOCKER_HUB_USERNAME }}/flasktdd:cache
+        cache-to: type=registry, ref=${{ secrets.DOCKER_HUB }}/flasktdd:buildcache, mode=max
 
-  test:
-    runs-on: ubuntu-latest
-    container:
-      image: agruezo/flask-tdd-docker
-
-    steps:
-
-    - run: |
-        pytest "src/tests" -p no:warnings
-
-
-
-  # test:
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-
-  #   - name: Checkout
-  #     uses: actions/checkout@v3
-
-  #   - name: Login to Docker Hub
-  #     uses: docker/login-action@v2
-  #     with:
-  #       username: ${{ secrets.DOCKER_HUB_USERNAME}}
-  #       password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-
-  #   - name: Build and push Docker images
-  #     uses: docker/build-push-action@v3.2.0
-  #     with:
-  #       context: .
-  #       file: ./Dockerfile.prod
-  #       builder: ${{ steps.buildx.outputs.name }}
-  #       push: true
-  #       tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flasktdd:latest
-  #       cache-from: type=registry, ref=${{ secrets.DOCKER_HUB_USERNAME }}/flasktdd:cache
-  #       cache-to: type=registry, ref=${{ secrets.DOCKER_HUB }}/flasktdd:buildcache, mode=max
