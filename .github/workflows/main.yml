@@ -27,21 +27,29 @@ jobs:
         load: true
         tags: flasktdd:latest
 
-    # - name: Postgres
-    #   container: node:latest
-    #   services:
-    #     postgres:
-    #       image: postgres:latest
-    #       env:
-    #         POSTGRES_DB: users
-    #         POSTGRES_USR: runner
-    #         POSTGRES_PASSWORD: runner
-    #         DATABASE_TEST_URL: postgresql://runner:runner@postgres:5432/users
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: flasktdd:latest
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: users
+          POSTGRES_USR: runner
+          POSTGRES_PASSWORD: runner
+          POSTGRES_PORT: 5432
+        ports:
+        - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
 
     - name: Test
       run: |
-        docker image inspect flasktdd:latest
-        docker run flasktdd:latest
+        pytest "src/tests" -p no:warnings
+
 
   # test:
   #   runs-on: ubuntu-latest
