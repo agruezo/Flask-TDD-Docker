@@ -36,3 +36,30 @@ jobs:
         cache-from: type=registry, ref=${{ secrets.DOCKER_HUB_USERNAME }}/flasktdd:cache
         cache-to: type=registry, ref=${{ secrets.DOCKER_HUB }}/flasktdd:buildcache, mode=max
 
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ secrets.DOCKER_HUB_USERNAME }}/flasktdd:latest
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: users
+          POSTGRES_USR: runner
+          POSTGRES_PASSWORD: runner
+          POSTGRES_PORT: 5432
+        ports:
+          - 5432:5432
+        options:
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Run Tests
+        run: |
+          pytest "src/tests" -p no:warnings
+          flake8 src
+          black src --check
+          isort src --check-only
+
