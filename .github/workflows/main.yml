@@ -46,8 +46,8 @@ jobs:
         image: postgres:latest
         env:
           POSTGRES_DB: users
-          POSTGRES_USR: runner
-          POSTGRES_PASSWORD: runner
+          POSTGRES_USR: postgres
+          POSTGRES_PASSWORD: postgres
           POSTGRES_PORT: 5432
         ports:
           - 5432:5432
@@ -59,6 +59,5 @@ jobs:
 
     steps:
       - name: Run Tests
-        uses: addnab/docker-run-action@v3
-          run: |
-            docker compose exec api python -m pytest "src/tests" -p no:warnings
+        run: |
+          pytest "src/tests" -p no:warnings
