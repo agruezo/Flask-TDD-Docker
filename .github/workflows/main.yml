@@ -60,4 +60,6 @@ jobs:
       - name: Run Tests
         run: |
           flake8 .
+          black . --check
+          isort . --check-only
 
