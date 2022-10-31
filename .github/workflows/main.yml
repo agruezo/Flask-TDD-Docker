@@ -59,7 +59,7 @@ jobs:
     steps:
       - name: Run Tests
         run: |
-          flake8 /__w/Flask-TDD-Docker/Flask-TDD-Docker
-          black /__w/Flask-TDD-Docker/Flask-TDD-Docker --check
-          isort /__w/Flask-TDD-Docker/Flask-TDD-Docker --check-only
+          flake8 /__w/Flask-TDD-Docker/Flask-TDD-Docker/src
+          black /__w/Flask-TDD-Docker/Flask-TDD-Docker/src --check
+          isort /__w/Flask-TDD-Docker/Flask-TDD-Docker/src --check-only
 
