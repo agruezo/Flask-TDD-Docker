@@ -60,7 +60,5 @@ jobs:
 
       - name: Run Tests
         run: |
-          pwd
+          cd Flask-TDD-Docker
           ls -a
-          cd ..
-          pwd
