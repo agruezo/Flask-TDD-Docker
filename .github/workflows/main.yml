@@ -40,6 +40,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: agruezo/flasktdd:latest
+    defaults:
+      run:
+        working-directory: /
     services:
       postgres:
         image: postgres:latest
@@ -60,5 +63,4 @@ jobs:
 
       - name: Run Tests
         run: |
-          open .
-          ls -a
+          pytest "src/tests" -p no:warnings
