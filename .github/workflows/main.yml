@@ -60,7 +60,7 @@ jobs:
 
       - name: Run Tests
         run: |
-          pytest "." -p no:warnings
+          pytest 
           flake8 src
           black src --check
           isort src --check-only
