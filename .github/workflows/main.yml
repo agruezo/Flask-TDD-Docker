@@ -42,7 +42,7 @@ jobs:
       image: agruezo/flasktdd:latest
     defaults:
       run:
-        working-directory: /
+        working-directory: /usr/src/app
     services:
       postgres:
         image: postgres:latest
