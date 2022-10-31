@@ -27,8 +27,8 @@ jobs:
         load: true
         tags: flasktdd:latest
 
-    - name: Test
-      image: flasktdd:latest
+    - name: Postgres
+      container: node:latest
       services:
         postgres:
           image: postgres:latest
@@ -37,6 +37,8 @@ jobs:
             POSTGRES_USR: runner
             POSTGRES_PASSWORD: runner
             DATABASE_TEST_URL: postgresql://runner:runner@postgres:5432/users
+
+    - name: Test
       run: |
         docker image inspect flasktdd:latest
 
