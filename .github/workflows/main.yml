@@ -28,6 +28,15 @@ jobs:
         tags: flasktdd:latest
 
     - name: Test
+      image: flasktdd:latest
+      services:
+        postgres:
+          image: postgres:latest
+          env:
+            POSTGRES_DB: users
+            POSTGRES_USR: runner
+            POSTGRES_PASSWORD: runner
+            DATABASE_TEST_URL: postgresql://runner:runner@postgres:5432/users
       run: |
         docker image inspect flasktdd:latest
 
