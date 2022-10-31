@@ -9,5 +9,5 @@ Requirements.txt file:
    - `RUN pip3 install psycopg2-binary --no-binary psycopg2-binary`
 
 When building Dockerfile.prod:
-- run the following in your the command line:
+- run the following in the command line:
     - `docker build -f Dockerfile.prod  --platform linux/amd64 -t registry.heroku.com/APP_NAME/web .`
