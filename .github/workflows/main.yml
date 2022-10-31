@@ -60,7 +60,7 @@ jobs:
 
       - name: Run Tests
         run: |
-          pytest 
+          exec api python -m pytest "src/tests" -p no:warnings 
           flake8 src
           black src --check
           isort src --check-only
