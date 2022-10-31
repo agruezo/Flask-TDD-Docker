@@ -28,10 +28,10 @@ jobs:
 
     - name: Test
       run: |
-        docker-compose exec api python -m pytest "src/tests" -p no:warnings
-        docker-compose exec api flake8 src
-        docker-compose exec api black src --check
-        docker-compose exec api isort src --check-only
+        pytest "src/tests" -p no:warnings
+        flake8 src
+        black src --check
+        isort src --check-only
 
   # test:
   #   runs-on: ubuntu-latest
