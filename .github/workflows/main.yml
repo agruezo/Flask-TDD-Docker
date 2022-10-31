@@ -59,7 +59,7 @@ jobs:
     steps:
       - name: Run Tests
         run: |
-          flake8 ./src
-          black ./src --check
-          isort ./src --check-only
+          flake8 usr/src/app
+          black usr/src/app --check
+          isort usr/src/app --check-only
 
