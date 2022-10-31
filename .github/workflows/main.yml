@@ -60,7 +60,4 @@ jobs:
 
       - name: Run Tests
         run: |
-          exec pytest "src/tests" -p no:warnings 
-          flake8 src
-          black src --check
-          isort src --check-only
+          pwd
