@@ -48,9 +48,10 @@ jobs:
         image: postgres:latest
         env:
           POSTGRES_DB: users
-          POSTGRES_USR: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_USR: runner
+          POSTGRES_PASSWORD: runner
           POSTGRES_PORT: 5432
+          DATABASE_TEST_URL: postgresql://runner:runner@postgres:5432/users
         ports:
           - 5432:5432
         options:
