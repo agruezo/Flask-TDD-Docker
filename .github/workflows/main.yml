@@ -58,5 +58,5 @@ jobs:
     steps:
       - name: Run Tests
         run: |
-          pytest "/__w/Flask-TDD-Docker/Flask-TDD-Docker/src/tests" -p no:warnings
+          pytest -p no:warnings
 
