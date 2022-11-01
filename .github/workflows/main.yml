@@ -64,7 +64,7 @@ jobs:
 
       - name: Run PyTest
         run: |
-          pytest "src/tests" -p no:warnings no:cacheprovider
+          pytest "src/tests" -p no:warnings -p no:cacheprovider
           flake8 src
           black src --check
           isort src --check-only
