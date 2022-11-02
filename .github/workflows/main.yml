@@ -71,22 +71,23 @@ jobs:
           isort src --check-only
 
   deploy:
+    name: Build, Push and Release a Docker container to Heroku
     runs-on: ubuntu-latest
     needs: test
+    env:
+      HEROKU_API_KEY: ${{ secrets.HEROKU_AUTH_TOKEN }}
+      APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
 
     steps:
 
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Build, Push and Release a Docker container to Heroku.
-      uses: gonuit/heroku-docker-deploy@v1.3.3
-      with:
-        email: ${{ secrets.HEROKU_EMAIL }}
-        heroku_api_key: ${{ secrets.HEROKU_AUTH_TOKEN }}
-        heroku_app_name: "young-crag-46718"
-        dockerfile_directory: ./
-        dockerfile_name: Dockerfile.prod
-        docker_options: "--no-cache"
-        process_type: web
+    - name: Docker Build
+      run: docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
+
+    - name: Publish
+      run: |
+        heroku container:push web -a $APP_NAME
+        heroku container:release web -a $APP_NAME
 
