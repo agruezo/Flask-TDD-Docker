@@ -53,7 +53,6 @@ jobs:
           POSTGRES_PASSWORD: runner
           POSTGRES_PORT: 5432
           DATABASE_TEST_URL: postgresql://runner:runner@postgres:5432/users
-          DATABASE_URL: postgresql://runner:runner@postgres:5432/users
         ports:
           - 5432:5432
         options:

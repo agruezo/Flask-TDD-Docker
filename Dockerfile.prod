@@ -9,6 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PTYHONUNBUFFERED 1
 ENV FLASK_ENV production
 ENV APP_SETTINGS src.config.ProductionConfig
+ENV SQLALCHEMY_DATABASE_URI 'postgresql://runner:runner@postgres:5432/api_test'
 
 # install system dependencies
 RUN apt-get update \
