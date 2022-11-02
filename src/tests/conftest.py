@@ -14,10 +14,6 @@ def test_app():
 
 @pytest.fixture(scope="module")
 def test_database():
-    from dotenv import load_dotenv
-    load_dotenv()
-    import os
-    os.getenv("SQLALCHEMY_DATABASE_URI")
     db.create_all()
     yield db
     db.session.remove()
