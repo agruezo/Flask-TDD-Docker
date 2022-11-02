@@ -1,3 +1,5 @@
+[![CI/CD](https://github.com/agruezo/Flask-TDD-Docker/actions/workflows/main.yml/badge.svg)](https://github.com/agruezo/Flask-TDD-Docker/actions/workflows/main.yml)
+
 Issues with Mac M1:
 
 Requirements.txt file:
