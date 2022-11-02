@@ -9,7 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PTYHONUNBUFFERED 1
 ENV FLASK_ENV production
 ENV APP_SETTINGS src.config.ProductionConfig
-ENV DATABASE_TEST_URL 'postgresql://postgres:postgres@api-db:5432/api_test'
+ENV DATABASE_TEST_URL 'postgresql://postgres:postgres@api-db:5432/users'
 
 # install system dependencies
 RUN apt-get update \
