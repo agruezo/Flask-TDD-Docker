@@ -85,7 +85,6 @@ jobs:
 
     - name: Build, Push, and Release a Docker container to Heroku
       run: |
-        apk add --no-cache curl
         chmod +x ./release.sh
         docker build
           --tag $HEROKU_REGISTRY_IMAGE
