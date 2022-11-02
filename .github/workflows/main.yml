@@ -86,10 +86,7 @@ jobs:
     - name: Build, Push, and Release a Docker container to Heroku
       run: |
         chmod +x ./release.sh
-        docker build
-          --tag $HEROKU_REGISTRY_IMAGE
-          --file ./Dockerfile.prod
-          "."
+        docker build -f ./Dockerfile.prod -t $HEROKU_REGISTRY_IMAGE .
         docker login --u _ -p $HEROKU_API_KEY registry.heroku.com
         docker push $HEROKU_REGISTRY_IMAGE
         ./release.sh
