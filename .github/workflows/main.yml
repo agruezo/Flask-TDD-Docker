@@ -85,16 +85,16 @@ jobs:
 
     - name: Build, Push, and Release a Docker container to Heroku
       run: |
-        chmod +x ./release.sh
+        
         docker build -f ./Dockerfile.prod -t $HEROKU_REGISTRY_IMAGE .
         docker login -u _ -p $HEROKU_API_KEY registry.heroku.com
         docker push $HEROKU_REGISTRY_IMAGE
-        ./release.sh
+        
 
-    # - name: Publish
-    #   run: |
-    #     heroku container:push web -a $APP_NAME
-    #     heroku container:release web -a $APP_NAME
+    - name: Publish
+      run: |
+        heroku container:push web -a $APP_NAME
+        heroku container:release web -a $APP_NAME
 
     # uses: gonuit/heroku-docker-deploy@v1.3.3
     #   with:
