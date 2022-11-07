@@ -67,7 +67,7 @@ jobs:
         run: |
           python3 -m venv env
           which env
-          source /usr/src/app/env/bin/activate
+          source /usr/bin/env/activate
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest==7.2.0 flake8==5.0.4 black==22.10.0 isort==5.10.1
