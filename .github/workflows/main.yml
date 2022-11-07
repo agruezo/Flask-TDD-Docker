@@ -65,10 +65,8 @@ jobs:
 
       - name: Run Tests
         run: |
-          pip install pipenv
-          python3 -m pipenv install -r requirements.txt
-          python3 -m pipenv install install pytest==7.2.0 flake8==5.0.4 black==22.10.0 isort==5.10.1
-          python3 -m pipenv shell
+          pip install -r requirements.txt
+          pip install pytest==7.2.0 flake8==5.0.4 black==22.10.0 isort==5.10.1
           pytest "src/tests" -p no:warnings
           flake8 src
           black src --check
