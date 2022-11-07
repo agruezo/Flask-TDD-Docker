@@ -70,7 +70,7 @@ jobs:
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest==7.2.0 flake8==5.0.4 black==22.10.0 isort==5.10.1
-          pytest "src/tests" -p no:warnings -p no:cacheprovider
+          pytest "src/tests" -p no:warnings
           flake8 src
           black src --check
           isort src --check-only

@@ -64,6 +64,7 @@ COPY . .
 
 # add and run as non-root user
 RUN adduser --disabled-password myuser
+RUN chown myuser:myuser -R /usr/src/app
 USER myuser
 
 # add gunicorn
