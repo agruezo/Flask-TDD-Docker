@@ -30,7 +30,7 @@ COPY . .
 RUN pip install flake8==5.0.4 black==22.10.0 isort==5.10.1
 RUN flake8 src
 RUN black src  --check
-RUN isort --check-only
+RUN isort src --check-only
 
 
 # FINAL #
