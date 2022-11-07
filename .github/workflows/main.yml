@@ -41,8 +41,8 @@ jobs:
     needs: build
     container:
       image: agruezo/flasktdd:latest
-        with:
-          DATABASE_TEST_URL: postgresql://postgres:postgres@postgres:5432/users
+      with:
+        DATABASE_TEST_URL: postgresql://postgres:postgres@postgres:5432/users
     defaults:
       run:
         working-directory: /usr/src/app
