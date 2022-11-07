@@ -58,7 +58,6 @@ COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --no-cache /wheels/*
-RUN pip install pytest==7.2.0
 
 # add app
 COPY . .
