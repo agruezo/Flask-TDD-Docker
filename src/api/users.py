@@ -1,8 +1,14 @@
 from flask import Blueprint, request
 from flask_restx import Api, Resource, fields
 
-from src import db
-from src.api.models import User
+from src.api.crud import (  # isort:skip
+    get_all_users,
+    get_user_by_id,
+    get_user_by_email,
+    add_user,
+    update_user,
+    delete_user,
+)
 
 users_blueprint = Blueprint("users", __name__)
 api = Api(users_blueprint)
@@ -19,6 +25,11 @@ user = api.model(
 
 
 class UsersList(Resource):
+    @api.marshal_with(user, as_list=True)
+    def get(self):
+
+        return get_all_users(), 200
+
     @api.expect(user, validate=True)
     def post(self):
         post_data = request.get_json()
@@ -26,27 +37,22 @@ class UsersList(Resource):
         email = post_data.get("email")
         response = {}
 
-        user = User.query.filter_by(email=email).first()
+        user = get_user_by_email(email)
         if user:
             response["message"] = "Sorry. That email already exists."
             return response, 400
 
-        db.session.add(User(username=username, email=email))
-        db.session.commit()
+        add_user(username, email)
 
         response["message"] = f"{email} was added!"
 
         return response, 201
 
-    @api.marshal_with(user, as_list=True)
-    def get(self):
-        return User.query.all(), 200
-
 
 class Users(Resource):
     @api.marshal_with(user)
     def get(self, user_id):
-        user = User.query.filter_by(id=user_id).first()
+        user = get_user_by_id(user_id)
         if not user:
             api.abort(404, f"User {user_id} does not exist")
 
@@ -59,17 +65,15 @@ class Users(Resource):
         email = post_data.get("email")
         response = {}
 
-        user = User.query.filter_by(id=user_id).first()
+        user = get_user_by_id(user_id)
         if not user:
             api.abort(404, f"User {user_id} does not exist")
 
-        if User.query.filter_by(email=email).first():
+        if get_user_by_email(email):
             response["message"] = "Sorry. That email already exists."
             return response, 400
 
-        user.username = username
-        user.email = email
-        db.session.commit()
+        update_user(user, username, email)
 
         response["message"] = f"{user.id} was updated!"
 
@@ -77,12 +81,11 @@ class Users(Resource):
 
     def delete(self, user_id):
         response = {}
-        user = User.query.filter_by(id=user_id).first()
+        user = get_user_by_id(user_id)
         if not user:
             api.abort(404, f"User {user_id} does not exist")
 
-        db.session.delete(user)
-        db.session.commit()
+        delete_user(user)
 
         response["message"] = f"{user.email} was removed!"
 

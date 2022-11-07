@@ -20,7 +20,11 @@ def test_add_user(test_app, test_database):
 
 def test_add_user_invalid_json(test_app, test_database):
     client = test_app.test_client()
-    res = client.post("/users", data=json.dumps({}), content_type="application/json")
+    res = client.post(
+        "/users",
+        data=json.dumps({}),
+        content_type="application/json",
+    )
     data = json.loads(res.data.decode())
 
     assert res.status_code == 400

@@ -19,15 +19,17 @@ RUN apt update -y \
 RUN pip3 install psycopg2-binary --no-binary psycopg2-binary
 
 # add and install requirements
+RUN pip install --upgrade pip
 COPY ./requirements.txt .
-RUN pip install -r requirements.txt
+COPY ./requirements-dev.txt .
+RUN pip install -r requirements-dev.txt
 EXPOSE 5000
 
 # add app
 COPY . .
 
 # run server
-CMD python manage.py run -h 0.0.0.0
+# CMD python manage.py run -h 0.0.0.0
 
 # add entrypoint.sh
 COPY ./entrypoint.sh .
