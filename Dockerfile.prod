@@ -53,6 +53,11 @@ RUN apt-get update \
     && apt-get -y install netcat gcc postgresql \
     && apt-get clean
 
+RUN apt update -y \ 
+    && apt install -y build-essential libpq-dev
+
+RUN pip3 install psycopg2-binary --no-binary psycopg2-binary
+
 # install dependencies
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
