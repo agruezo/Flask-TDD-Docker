@@ -65,6 +65,9 @@ jobs:
 
       - name: Run Tests
         run: |
+          export FLASK_APP=flaskr
+          export FLASK_DEBUG=development
+          flask run
           pytest "src/tests" -p no:warnings
           flake8 src
           black src --check
