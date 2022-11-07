@@ -64,6 +64,8 @@ jobs:
     steps:
 
       - name: Run Tests
+        with:
+          DATABASE_TEST_URL: postgresql://postgres:postgres@postgres:5432/users
         run: |
           pytest "src/tests" -p no:warnings -p no:cacheprovider
           flake8 src
