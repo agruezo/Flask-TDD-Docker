@@ -65,6 +65,7 @@ jobs:
 
       - name: Run Tests
         run: |
+          pip install pytest
           pytest "src/tests" -p no:warnings -p no:cacheprovider
           flake8 src
           black src --check
