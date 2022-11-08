@@ -49,11 +49,11 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_DB: users
-          POSTGRES_USR: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: {{ secrets.POSTGRES_DB }}
+          POSTGRES_USR: {{ secrets.POSTGRES_USR }}
+          POSTGRES_PASSWORD: {{ secrets.POSTGRES_PASSWORD }}
           POSTGRES_PORT: 5432
-          DATABASE_TEST_URL: postgresql://postgres:postgres@postgres:5432/users
+          DATABASE_TEST_URL: {{ secrets.URL }}
         ports:
           - 5432:5432
         options:
@@ -67,7 +67,7 @@ jobs:
       - name: Run Tests
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          DATABASE_URL: postgresql://postgres:postgres@postgres:5432/users
+          DATABASE_URL: {{ secrets.URL }}
         run: |
           pytest "src/tests" -p no:warnings -p no:cacheprovider
           flake8 src
