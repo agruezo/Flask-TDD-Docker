@@ -50,7 +50,7 @@ jobs:
         image: postgres:latest
         env:
           POSTGRES_DB: {{ secrets.POSTGRES_DB }}
-          POSTGRES_USR: {{ secrets.POSTGRES_USR }}
+          POSTGRES_USER: {{ secrets.POSTGRES_USER }}
           POSTGRES_PASSWORD: {{ secrets.POSTGRES_PASSWORD }}
           POSTGRES_PORT: 5432
           DATABASE_TEST_URL: {{ secrets.URL }}
