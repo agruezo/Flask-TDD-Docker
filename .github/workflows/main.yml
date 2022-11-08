@@ -67,7 +67,7 @@ jobs:
       - name: Run Tests
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          DATABASE_URL: {{ secrets.URL }}
+          DATABASE_URL: postgresql://postgres:postgres@postgres:5432/users
         run: |
           pytest "src/tests" -p no:warnings -p no:cacheprovider
           flake8 src
