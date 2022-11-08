@@ -54,6 +54,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_PORT: 5432
           DATABASE_TEST_URL: postgresql://postgres:postgres@postgres:5432/users
+          FLASK_ENV: development
         ports:
           - 5432:5432
         options:
