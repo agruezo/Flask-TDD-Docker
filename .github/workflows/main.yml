@@ -41,8 +41,6 @@ jobs:
     needs: build
     container:
       image: agruezo/flasktdd:latest
-      env:
-        DATABASE_TEST_URL: postgresql://postgres:postgres@postgres:5432/users
     defaults:
       run:
         working-directory: /usr/src/app
@@ -67,6 +65,7 @@ jobs:
 
       - name: Run Tests
         run: |
+          export DATABASE_TEST_URL='postgresql://postgres:postgres@postgres:5432/users'
           pytest "src/tests" -p no:warnings -p no:cacheprovider
           flake8 src
           black src --check
