@@ -95,13 +95,4 @@ jobs:
         docker push $HEROKU_REGISTRY_IMAGE/web:latest
         heroku container:release web -a $APP_NAME
 
-    # uses: gonuit/heroku-docker-deploy@v1.3.3
-    #   with:
-    #     email: ${{ secrets.HEROKU_EMAIL }}
-    #     heroku_api_key: ${{ secrets.HEROKU_AUTH_TOKEN }}
-    #     heroku_app_name: "young-crag-46718"
-    #     dockerfile_directory: ./
-    #     dockerfile_name: Dockerfile.prod
-    #     docker_options: "--no-cache"
-    #     process_type: web
 
