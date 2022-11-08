@@ -50,10 +50,10 @@ jobs:
         image: postgres:latest
         env:
           POSTGRES_DB: users
-          POSTGRES_USER: {{ secrets.POSTGRES_USER }}
-          POSTGRES_PASSWORD: {{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_USR: postgres
+          POSTGRES_PASSWORD: postgres
           POSTGRES_PORT: 5432
-          DATABASE_TEST_URL: {{ secrets.URL }}
+          DATABASE_TEST_URL: postgresql://postgres:postgres@postgres:5432/users
         ports:
           - 5432:5432
         options:
