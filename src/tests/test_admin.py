@@ -16,7 +16,7 @@ def test_admin_view_dev():
         db.create_all()
 
         client = app.test_client()
-        res = client.get("/admin/user/")
+        res = client.get("/admin/")
 
         assert res.status_code == 200
 
@@ -36,7 +36,7 @@ def test_admin_view_prod():
         db.create_all()
 
         client = app.test_client()
-        res = client.get("/admin/user")
+        res = client.get("/admin/")
 
         assert res.status_code == 404
 
