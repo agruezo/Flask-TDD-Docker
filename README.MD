@@ -1,5 +1,35 @@
 [![CI/CD](https://github.com/agruezo/Flask-TDD-Docker/actions/workflows/main.yml/badge.svg)](https://github.com/agruezo/Flask-TDD-Docker/actions/workflows/main.yml)
 
+<h1 align="center" >Test-Driven Development with Python, Flask, and Docker</h1>
+
+<h2>Objectives</h2>
+
+<h3>Part 1</h3>
+
+-- Develop a RESTful API with Python, the Flask web framework, Flask-RESTX, and Postgres. Containerize Flask and Postgres to run inside Docker containers and configure pytest in order to practice Test-Driven Development (TDD)
+
+
+- Develop a RESTful API with Python, Flask, and Flask-RESTX
+- Practice Test-Driven Development
+- Test a Flask app with pytest
+- Containerize Flask and Postgres inside a Docker container
+- Run unit and integration tests with code coverage
+- Check code for any code quality issues via a linter
+
+<h3>Part 2</h3>
+
+-- Deploy Flask, Gunicorn, and Postgres to Heroku with Docker. Continue building out the RESTful API while writing unit and integration tests. Document the API with Swagger.
+
+- Configure GitLab CI for continuous integration and deployment
+- Speed up a Docker-based CI build with Docker Cache
+- Deploy Flask, Gunicorn, and Postgres to Heroku with Docker
+- Parameterize test functions and mock functionality in tests with pytest
+- Run tests in parallel with pytest-xdist
+- Configure Flask-Admin with SQLAlchemy models
+- Document a RESTful API with Swagger/OpenAPI
+
+---
+
 <h3>ISSUES WITH MAC M1:</h3>
 
 - Requirements.txt file:
@@ -12,7 +42,7 @@
 
       RUN pip3 install psycopg2-binary --no-binary psycopg2-binary
 
-- When building Dockerfile.prod:
+- When building Dockerfile.prod to test on Heroku locally:
    - run the following in the command line:
 
       ```
