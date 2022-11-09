@@ -70,8 +70,6 @@ jobs:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
           DATABASE_URL: postgresql://postgres:postgres@postgres:5432/users
         run: |
-          python manage.py recreate_db
-          python manage.py seed_db
           pytest "src/tests" -p no:warnings -p no:cacheprovider
           flake8 src
           black src --check
