@@ -20,7 +20,7 @@
 
 -- Deploy Flask, Gunicorn, and Postgres to Heroku with Docker. Continue building out the RESTful API while writing unit and integration tests. Document the API with Swagger.
 
-- Configure GitLab CI for continuous integration and deployment
+- Configure Github Actions for continuous integration and deployment
 - Speed up a Docker-based CI build with Docker Cache
 - Deploy Flask, Gunicorn, and Postgres to Heroku with Docker
 - Parameterize test functions and mock functionality in tests with pytest
