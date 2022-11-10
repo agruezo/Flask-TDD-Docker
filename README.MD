@@ -1,4 +1,4 @@
-![Flask-TDD-Docker](https://user-images.githubusercontent.com/90926044/201146591-98872a9c-a7a7-45ea-a1fc-d715c169a7bc.png)
+![Flask-TDD-Docker](https://user-images.githubusercontent.com/90926044/201151215-12405fa9-83c8-4720-b84d-7c3fcc6d447f.png)
 
 [![CI/CD](https://github.com/agruezo/Flask-TDD-Docker/actions/workflows/main.yml/badge.svg)](https://github.com/agruezo/Flask-TDD-Docker/actions/workflows/main.yml)
 
