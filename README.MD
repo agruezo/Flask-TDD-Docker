@@ -1,3 +1,5 @@
+![Flask-TDD-Docker](https://user-images.githubusercontent.com/90926044/201146591-98872a9c-a7a7-45ea-a1fc-d715c169a7bc.png)
+
 [![CI/CD](https://github.com/agruezo/Flask-TDD-Docker/actions/workflows/main.yml/badge.svg)](https://github.com/agruezo/Flask-TDD-Docker/actions/workflows/main.yml)
 
 <h1 align="center" >Test-Driven Development with Python, Flask, and Docker</h1>
