@@ -35,7 +35,7 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flasktdd:latest
         cache-from: type=registry, ref=${{ secrets.DOCKER_HUB_USERNAME }}/flasktdd:cache
-        cache-to: type=registry, ref=${{ secrets.DOCKER_HUB }}/flasktdd:buildcache, mode=max
+        cache-to: type=registry, ref=${{ secrets.DOCKER_HUB_USERNAME }}/flasktdd:buildcache, mode=max
 
   test:
     runs-on: ubuntu-latest
