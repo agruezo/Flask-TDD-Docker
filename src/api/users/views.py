@@ -94,6 +94,7 @@ class Users(Resource):
     @users_namespace.response(200, "<user_id> was removed!")
     @users_namespace.response(404, "User <user_id> does not exist")
     def delete(self, user_id):
+        """Deletes a user"""
         response = {}
         user = get_user_by_id(user_id)
         if not user:
